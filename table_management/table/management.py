@@ -6,10 +6,10 @@
 # cur = con.cursor()
 # # cur.execute("CREATE TABLE content_category (id, name, slug);")
 
-# # path = "D:/Final/api_yamdb/static/data/category.csv"
+# # path = "./category.csv"
 
 # with open(
-#     'D:/Final/api_yamdb/api_yamdb/static/data/category.csv',
+#     './category.csv',
 #     'r',
 #     encoding='utf-8'
 # ) as csvfiles:
