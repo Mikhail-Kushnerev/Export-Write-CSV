@@ -1,21 +1,16 @@
-from email import header
-from django.shortcuts import render
+import csv
 
-# Create your views here.
+from datetime import datetime as dt
 from django.shortcuts import render
-from .models import Student
 from django.http import HttpResponse
 
-import csv
+from .models import Student
 
 
 def export_csv(request):
     students = Student.objects.all()
-    response = HttpResponse(
-        content_type='text/csv',
-        headers = {'Сохранить как': 'attachment; filename=students.csv'}
-    )
-    #* response['Content-Disposition'] = 'attachment; filename=students.csv'
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = f'attachment; filename={dt.now()}.csv'
     response.write(u'\ufeff'.encode('utf8'))
     writer = csv.writer(response, delimiter=';')
     writer.writerow(['RollNo', 'Class', 'First Name', 'Last Name'])
@@ -25,6 +20,7 @@ def export_csv(request):
         #* writer.writerow(std)
         writer.writerow(
             [
+                std.id,
                 std.roll,
                 std.sclass,
                 std.fname,
