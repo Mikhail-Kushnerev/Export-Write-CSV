@@ -128,4 +128,4 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-table_managment/static/data/*.csv
+data/*.csv
