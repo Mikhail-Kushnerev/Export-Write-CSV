@@ -3,7 +3,7 @@ import csv, sqlite3
 
 con = sqlite3.connect("db.sqlite3")
 cur = con.cursor()
-cur.execute("CREATE TABLE ttable (id, RollNo, Class, First_Name, Last_Name);")
+#* cur.execute("CREATE TABLE table_student (id, RollNo, Class, First_Name, Last_Name);")
 
 path = "D:/Final/Export-Write-CSV/table_management/static/data/table.csv"
 
@@ -27,7 +27,7 @@ with open(
         ) if i else 1 for i in reader
     ]
 cur.executemany(
-    "INSERT INTO ttable (RollNo, id, Class, First_Name, Last_Name) VALUES (?, ?, ?, ?, ?);",
+    "INSERT INTO table_student (roll, id, sclass, fname, lname) VALUES (?, ?, ?, ?, ?);",
     created
 )
 con.commit()
