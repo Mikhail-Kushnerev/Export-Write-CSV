@@ -128,4 +128,4 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-static/data/
+table_managment/static/data/
