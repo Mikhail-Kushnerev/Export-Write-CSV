@@ -1,11 +1,11 @@
-import csv, sqlite3
-
+import os, csv
+import sqlite3
 
 con = sqlite3.connect("db.sqlite3")
 cur = con.cursor()
-#* cur.execute("CREATE TABLE table_student (id, RollNo, Class, First_Name, Last_Name);")
+cur.execute("CREATE TABLE IF NOT EXISTS products (id_product, name, category, units, weight);")
 
-path = "D:/Final/Export-Write-CSV/table_management/static/data/table.csv"
+path = os.path.abspath(r'table_management\static\data\products.csv')
 
 with open(
     path,
@@ -14,20 +14,20 @@ with open(
 ) as csvfiles:
     reader = csv.DictReader(
         csvfiles,
-        delimiter=';',
-        quotechar=','
+        # delimiter=';',
+        # quotechar=','
     )
     created = [
         (
-            i['RollNo'],
-            i['id'],
-            i['Class'],
-            i['First_Name'],
-            i['Last_Name']
+            i['id_product'],
+            i['name'],
+            i['category'],
+            i['units'],
+            i['weight']
         ) if i else 1 for i in reader
     ]
 cur.executemany(
-    "INSERT INTO table_student (roll, id, sclass, fname, lname) VALUES (?, ?, ?, ?, ?);",
+    "INSERT INTO products (id_product, name, category, units, weight) VALUES (?, ?, ?, ?, ?);",
     created
 )
 con.commit()
