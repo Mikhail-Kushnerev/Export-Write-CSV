@@ -13,6 +13,7 @@
     </summary>
 
 ```cmd
+Export-Write-CSV:
 +---table_management
 |   |   manage.py
 |   +---static
@@ -41,6 +42,8 @@
 |   \---templates
 |           base.html  <-- Шаблон для скачивания БД
 \---venv
+|   .gitignore
+|   README.md
 ```
     
 </details>
