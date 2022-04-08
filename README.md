@@ -14,7 +14,6 @@
 
 ```cmd
 +---table_management
-|   |   db.sqlite3
 |   |   manage.py
 |   +---static
 |   |   \---data  <-- Директория для таблиц
@@ -40,7 +39,7 @@
 |   |   |   wsgi.py
 |   |   |   __init__.py
 |   \---templates
-|           base.html
+|           base.html  <-- Шаблон для скачивания БД
 \---venv
 ```
     
