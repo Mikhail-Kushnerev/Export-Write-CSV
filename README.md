@@ -7,6 +7,43 @@
 - быстро занести данные в БД для дальнейшей с ними работы;
 - скачать имеющиеся данные в файл с расширением **csv**, структурированный по столбцам.  
 
+<details>  
+    <summary> Структура </summary>
+
+```cmd
++---table_management
+|   |   db.sqlite3
+|   |   manage.py
+|   +---static
+|   |   \---data  <-- Директория для таблиц
+|   |           README.md
+|   +---table
+|   |   |   admin.py
+|   |   |   apps.py
+|   |   |   management.py  <-- Ручное
+|   |   |   models.py
+|   |   |   urls.py
+|   |   |   views.py
+|   |   |   __init__.py
+|   |   +---management
+|   |   |   |   __init__.py
+|   |   |   +---commands
+|   |   |   |   |   load_data_csv.py  <-- Для импорта данных в БД через py manage.py load_data_csv
+|   |   |   |   |   _private.py
+|   |   |   |   |   __init__.py
+|   +---table_management
+|   |   |   asgi.py
+|   |   |   settings.py
+|   |   |   urls.py
+|   |   |   wsgi.py
+|   |   |   __init__.py
+|   \---templates
+|           base.html
+\---venv
+```
+    
+</details>
+
 **Важно** помнить, что для корректной записи/чтения данных надо указыать те поля, которые заданы в самой исследуемой модели **Django** (даже поле **id**).
 
 ## Пример:
