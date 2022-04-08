@@ -19,15 +19,14 @@ class Command(BaseCommand):
             
             for row in DictReader(
                 open(f'static/data/{data}', 'r'),
-                delimiter=';',
-                quotechar=',',
+                delimiter=';'
             ):
                 created = model(
                     id=row['id'],
-                    roll=row['RollNo'],
+                    roll=int(row['RollNo']),
                     sclass=row['Class'],
-                    fname=row['First Name'],
-                    lname=row['Last Name']
+                    fname=row['First_Name'],
+                    lname=row['Last_Name']
                 )
                 created.save()
         self.stdout.write(self.style.SUCCESS(' Ready '))
